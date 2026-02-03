@@ -1,3 +1,6 @@
+# PostgreSQL configuration for Rails 8
+# Heroku automatically sets DATABASE_URL in production
+
 default: &default
   adapter: postgresql
   encoding: unicode
