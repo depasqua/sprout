@@ -1,6 +1,5 @@
-# MVP Plan — February 20 Demo
+# MVP Plan
 
-**Deadline:** February 20, 2026 (12 days)
 **Goal:** A working demo that shows the core volunteer management workflow end-to-end, replacing the Google Sheets process.
 
 ---
@@ -88,7 +87,7 @@ That's the story: inquiry → registration → attendance → status progression
 
 ## What's OUT of the MVP
 
-These are all planned features (documented in the roadmap) but not needed for the Feb 20 demo:
+These are all planned features (documented in the roadmap) but not needed for the MVP:
 
 | Feature | Why Deferred |
 |---------|-------------|
@@ -111,18 +110,18 @@ These are all planned features (documented in the roadmap) but not needed for th
 
 ## Build Sequence
 
-Work is ordered so that each day builds on the previous and the app is demoable at any point after Day 4.
+Work is ordered so that each step builds on the previous and the app is demoable at any point after Step 4.
 
-### Days 1-2: Foundation
+### Steps 1-2: Foundation
 
-**Day 1: Auth + Layout**
+**Step 1: Auth + Layout**
 - Install Tailwind CSS (`tailwindcss-rails`)
 - Run `bin/rails generate authentication`
 - Create admin layout: sidebar nav, header, content area, flash messages
 - Build login page
 - Seed admin user
 
-**Day 2: Shared UI + Pagy/Ransack**
+**Step 2: Shared UI + Pagy/Ransack**
 - Install Pagy and Ransack, create initializers
 - Build shared partials: `_flash`, `_pagination`, status badge helper
 - Set up Turbo Frame patterns for inline forms
@@ -130,21 +129,21 @@ Work is ordered so that each day builds on the previous and the app is demoable 
 
 *Checkpoint: Staff can log in and see an empty dashboard.*
 
-### Days 3-5: Volunteer CRUD
+### Steps 3-5: Volunteer CRUD
 
-**Day 3: Volunteer list**
+**Step 3: Volunteer list**
 - `VolunteersController#index`
 - List view with table: name, email, phone, status, inquiry date
 - Ransack search (name, email) and funnel stage filter
 - Pagy pagination
 - Color-coded status badges
 
-**Day 4: Volunteer detail + create**
+**Step 4: Volunteer detail + create**
 - `VolunteersController#show` — profile card, key dates, status badge
 - `VolunteersController#new/create` — form with validation, referral source dropdown
 - Duplicate detection on email (flash warning)
 
-**Day 5: Volunteer edit + status + timeline**
+**Step 5: Volunteer edit + status + timeline**
 - `VolunteersController#edit/update`
 - FunnelProgressionService for status transitions
 - Status change UI (dropdown or buttons on detail page)
@@ -153,16 +152,16 @@ Work is ordered so that each day builds on the previous and the app is demoable 
 
 *Checkpoint: Staff can view, create, edit, search, filter volunteers. Status changes tracked.*
 
-### Days 6-7: Public Inquiry Form
+### Steps 6-7: Public Inquiry Form
 
-**Day 6: Form + processing**
+**Step 6: Form + processing**
 - `Public::InquiriesController` (no auth)
 - Form page with fields, Invisible Captcha
 - On submit: find-or-create Volunteer with `inquiry` status
 - Thank-you page
 - Basic Rack::Attack rate limiting
 
-**Day 7: Notification + polish**
+**Step 7: Notification + polish**
 - Send email notification to admin on new inquiry (ActionMailer with letter_opener in dev)
 - Link InquiryFormSubmission to Volunteer
 - Show inquiry submissions on volunteer detail page
@@ -170,15 +169,15 @@ Work is ordered so that each day builds on the previous and the app is demoable 
 
 *Checkpoint: End-to-end inquiry flow works. Public form → volunteer appears in admin list.*
 
-### Days 8-9: Sessions & Attendance
+### Steps 8-9: Sessions & Attendance
 
-**Day 8: Session CRUD + registration**
+**Step 8: Session CRUD + registration**
 - `InformationSessionsController` — list, create, edit
 - Session detail page with registered volunteers list
 - Register/unregister volunteers from session page
 - Register from volunteer profile page
 
-**Day 9: Sign-in + attendance triggers**
+**Step 9: Sign-in + attendance triggers**
 - Sign-in interface (simplified, works on tablet)
 - Search by name, "Check In" button
 - Walk-in quick-add form
@@ -188,15 +187,15 @@ Work is ordered so that each day builds on the previous and the app is demoable 
 
 *Checkpoint: Full workflow demoable: inquiry → register → attend → status updates automatically.*
 
-### Days 10-11: Notes + Polish
+### Steps 10-11: Notes + Polish
 
-**Day 10: Notes system**
+**Step 10: Notes system**
 - Inline note form on volunteer detail (Turbo Frame)
 - Auto-notes on status changes and attendance (if not already done)
 - Chronological display
 - Note type indicators (manual vs system-generated)
 
-**Day 11: Demo polish**
+**Step 11: Demo polish**
 - Realistic seed data with varied dates, statuses, notes
 - Dashboard landing page with key counts (total inquiries, active volunteers, upcoming sessions)
 - Navigation polish — active states, breadcrumbs
@@ -206,7 +205,7 @@ Work is ordered so that each day builds on the previous and the app is demoable 
 
 *Checkpoint: App is polished and demo-ready.*
 
-### Day 12: Demo Prep
+### Step 12: Demo Prep
 
 - Final seed data review — does the demo story flow?
 - Practice the demo walkthrough
