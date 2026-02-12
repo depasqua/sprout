@@ -1,4 +1,4 @@
-## 🌱 Sprout – Volunteer Management
+## 🌱 Sprout – Volunteer Management System
 
 **Sprout** is a Ruby on Rails application that replaces spreadsheet-based workflows with a centralized system for managing the full volunteer lifecycle.
 
