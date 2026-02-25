@@ -10,7 +10,7 @@ Given('the following information sessions exist:') do |table|
     table.hashes.each do |row|
         FactoryBot.create(:information_session,
             capacity: row['capacity'],
-            scheduled_at: Date.parse(row['date']),
+            scheduled_at: Date.parse(row['scheduled_at']),
             name: row['name'],
             location: row['location']
         )
@@ -19,11 +19,12 @@ end
 
 Given('the following attendees exist:') do |table|
     table.hashes.each do |row|
-        FactoryBot.create(:volunteer,
-            first_name: row['name'],
-            last_name: row['email'],
-            email: row['phone'] 
-        )
+        Volunteer.find_or_create_by!(email: row['email']) do |volunteer|
+        volunteer.first_name = row['first_name']
+        volunteer.last_name  = row['last_name']
+        volunteer.password = 'password123' if volunteer.respond_to?(:password)
+
+      end
     end
 end
 

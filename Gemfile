@@ -69,5 +69,5 @@ group :test do
   gem "cucumber-rails", require: false
   gem "selenium-webdriver"
   gem 'cucumber'
-  gem 'cucumber-rails', require: false
+  gem 'warden'
 end
