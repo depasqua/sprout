@@ -7,7 +7,7 @@ module Aws
     class LambdaError < StandardError; end
 
     def initialize
-      @base_url = resolve_api_gateway_url
+      @base_url = nil
     end
 
     def create_zoom_meeting(session_title:, start_time:, duration_minutes:)
@@ -50,23 +50,32 @@ module Aws
 
     private
 
+    def base_url
+      @base_url ||= resolve_api_gateway_url
+    end
+
     def resolve_api_gateway_url
       # In production, API_GATEWAY_URL is set directly as a full URL.
       # In local dev, the API ID is dynamic so we read it from a file
-      # written by the LocalStack bootstrap script.
-      if ENV["API_GATEWAY_URL"]
-        return ENV["API_GATEWAY_URL"]
-      end
+      # written by the LocalStack bootstrap script. The file may not
+      # exist immediately if the bootstrap is still running, so we
+      # retry briefly to handle the startup race condition.
+      return ENV["API_GATEWAY_URL"] if ENV["API_GATEWAY_URL"]
 
       url_file = ENV["API_GATEWAY_URL_FILE"]
       raise "Set API_GATEWAY_URL or API_GATEWAY_URL_FILE" unless url_file
 
-      File.read(url_file).strip
+      3.times do
+        return File.read(url_file).strip if File.exist?(url_file)
+        sleep 2
+      end
+
+      raise "API Gateway URL file #{url_file} not found (LocalStack bootstrap may have failed)"
     end
 
     def post(path, body)
       response = HTTParty.post(
-        "#{@base_url}#{path}",
+        "#{base_url}#{path}",
         headers: { "Content-Type" => "application/json" },
         body: body.to_json,
         timeout: 30
