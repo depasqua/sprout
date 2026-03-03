@@ -50,12 +50,12 @@ group :development, :test do
   gem "bundler-audit", require: false
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", "~> 8.0", require: false
+  gem "brakeman", "~> 8.0.4", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem 'factory_bot_rails'
+  gem "factory_bot_rails"
 end
 
 group :development do
@@ -68,6 +68,6 @@ group :test do
   gem "capybara"
   gem "cucumber-rails", require: false
   gem "selenium-webdriver"
-  gem 'cucumber'
-  gem 'warden'
+  gem "cucumber"
+  gem "warden"
 end

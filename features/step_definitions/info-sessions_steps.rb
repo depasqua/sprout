@@ -23,7 +23,6 @@ Given('the following volunteers exist:') do |table|
         volunteer.first_name = row['first_name']
         volunteer.last_name  = row['last_name']
         volunteer.password = 'password123' if volunteer.respond_to?(:password)
-
       end
     end
 end
@@ -103,7 +102,7 @@ Given('I click the {string} button for attendee with name {string}') do |button,
 end
 
 Given('I click the {string} button on the confirmation pop-up modal') do |button|
-  within('.modal') do #might have to change .modal to whatever the conformation box is 
+  within('.modal') do # might have to change .modal to whatever the conformation box is
     click_button(button)
   end
 end
@@ -117,7 +116,7 @@ end
 
 Then('the status for {string} should change from {string} to {string}') do |full_name, old_status, new_status|
     first_name, last_name = full_name.split(" ", 2)
-    volunteer = Volunteer.find_by(first_name: , last_name: )
+    volunteer = Volunteer.find_by(first_name:, last_name:)
     visit volunteer_path(volunteer.id)
     expect(page).not_to have_content(old_status)
     expect(page).to have_content(new_status)
@@ -186,5 +185,5 @@ Then('{string} should receive a reminder email about the session') do |string|
 end
 
 Then('every attendee should receive an email notification that the event was cancelled and be prompted to sign up for a new information session') do
-  pending # Waiting on mail chimp 
+  pending # Waiting on mail chimp
 end

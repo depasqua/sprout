@@ -8,7 +8,6 @@ Given('the following users exist:') do |table|
         user.last_name  = row['last_name']
         user.password = 'password123' if volunteer.respond_to?(:password)
         user.role = row['role']
-
       end
     end
 end

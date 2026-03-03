@@ -35,7 +35,7 @@ Given('I select {string} in the {string} dropdown in the export data section') d
 end
 
 Given('Samantha Ray attended an information session in {int}') do |int|
-# Given('Samantha Ray attended an information session in {float}') do |float|
+  # Given('Samantha Ray attended an information session in {float}') do |float|
   pending # Write code here that turns the phrase above into concrete actions
 end
 

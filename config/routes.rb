@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :information_sessions # info sessions routes helper
   resources :volunteers # volunteers routes helper
-  resources :inquiry_form 
+  resources :inquiry_form
   resources :reporting_exporting
   resources :system_management
 

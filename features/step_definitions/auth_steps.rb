@@ -5,7 +5,7 @@
      last_name: "User",
      role: :admin
    )
-   login_as(@user, scope: :user)#fixed for oauth
+   login_as(@user, scope: :user)# fixed for oauth
    visit root_path
    expect(page).to have_content("Admin Dashboard")
  end
