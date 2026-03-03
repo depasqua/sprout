@@ -4,6 +4,7 @@ Given("I am a signed-in system administrator") do
     u.last_name  = "User"
     u.role       = :admin
   end
-
+  login_as(@user, scope: :user)
   visit root_path
+  expect(page).to have_content("Admin Dashboard")
 end
