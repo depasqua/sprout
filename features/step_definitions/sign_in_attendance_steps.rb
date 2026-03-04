@@ -23,7 +23,7 @@ end
 
 Then('the volunteer should be marked as attended for {string}') do |session_name|
   session = InformationSession.find_by!(name: session_name)
-  volunteer = Volunteer.find_by!(email: "jane@example.com")
+  volunteer = Volunteer.find_by!(email: "jane@childfocusnj.org")
 
   registration = SessionRegistration.find_by!(volunteer: volunteer, information_session: session)
 
@@ -31,13 +31,13 @@ Then('the volunteer should be marked as attended for {string}') do |session_name
 end
 
 Then('the volunteer status should update to {string}') do |status_text|
-  volunteer = Volunteer.find_by!(email: "jane@example.com")
+  volunteer = Volunteer.find_by!(email: "jane@childfocusnj.org")
 
   assert_equal status_text, volunteer.status.to_s.tr("_", " ")
 end
 
 Then('the attendance should record a date and time') do
-  volunteer = Volunteer.find_by!(email: "jane@example.com")
+  volunteer = Volunteer.find_by!(email: "jane@childfocusnj.org")
   session   = InformationSession.find_by!(name: "March 2025 Info Session")
   registration = SessionRegistration.find_by!(volunteer: volunteer, information_session: session)
 
