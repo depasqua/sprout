@@ -18,8 +18,8 @@ module Aws
       })
     end
 
-    def sync_to_optima(volunteer_id:)
-      post("/optima/sync", { volunteer_id: volunteer_id })
+    def sync_to_volunteer_management_system(volunteer_id:)
+      post("/volunteer-management-system/sync", { volunteer_id: volunteer_id })
     end
 
     def send_email(to:, subject:, html_body:, from_email: nil)
