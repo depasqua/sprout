@@ -41,3 +41,4 @@ infra/.venv/
 infra/cdk.out/
 infra/**/__pycache__/
 infra/**/*.pyc
+.idea/
