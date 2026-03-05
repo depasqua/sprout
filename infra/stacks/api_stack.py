@@ -27,12 +27,12 @@ class ApiStack(Stack):
             apigw.LambdaIntegration(lambdas.zoom_meeting_fn),
         )
 
-        # /optima
-        optima = api.root.add_resource("optima")
-        optima_sync = optima.add_resource("sync")
-        optima_sync.add_method(
+        # /volunteer-management-system
+        vms = api.root.add_resource("volunteer-management-system")
+        vms_sync = vms.add_resource("sync")
+        vms_sync.add_method(
             "POST",
-            apigw.LambdaIntegration(lambdas.optima_sync_fn),
+            apigw.LambdaIntegration(lambdas.volunteer_management_system_sync_fn),
         )
 
         # /mailchimp

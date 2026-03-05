@@ -62,13 +62,13 @@ class LambdaStack(Stack):
             security_groups=[self._lambda_sg],
         )
 
-        self.optima_sync_fn = _lambda.Function(
+        self.volunteer_management_system_sync_fn = _lambda.Function(
             self,
-            "OptimaSyncFn",
-            function_name="sprout-optima-sync",
+            "VolunteerManagementSystemSyncFn",
+            function_name="sprout-volunteer-management-system-sync",
             runtime=_lambda.Runtime.RUBY_3_3,
             handler="handler.handler",
-            code=_lambda.Code.from_asset(os.path.join(lambdas_dir, "optima_sync")),
+            code=_lambda.Code.from_asset(os.path.join(lambdas_dir, "volunteer_management_system_sync")),
             layers=[shared_layer],
             timeout=Duration.seconds(30),
             memory_size=256,
@@ -159,7 +159,7 @@ class LambdaStack(Stack):
         for fn in [
             self.zoom_meeting_fn,
             self.zoom_attendance_fn,
-            self.optima_sync_fn,
+            self.volunteer_management_system_sync_fn,
             self.mailchimp_realtime_fn,
             self.mailchimp_batch_fn,
         ]:
